@@ -1,38 +1,187 @@
+/* Primary colors 
+
+- Soft Cyan (Full Slider Bar): hsl(174, 77%, 80%)
+- Strong Cyan (Slider Backround): hsl(174, 86%, 45%)
+- Light Grayish Red (Discount Background): hsl(14, 92%, 95%)
+- Light Red (Discount Text): hsl(15, 100%, 70%)
+- Pale Blue (CTA Text): hsl(226, 100%, 87%) 
+
+
+  Neutral colors 
+
+- White (Pricing Component Background): hsl (0, 0%, 100%)
+- Very Pale Blue (Main Background): hsl(230, 100%, 99%)
+- Light Grayish Blue (Empty Slider Bar): hsl(224, 65%, 95%)
+- Light Grayish Blue (Toggle Background): hsl(223, 50%, 87%)
+- Grayish Blue (Text): hsl(225, 20%, 60%)
+- Dark Desaturated Blue (Text & CTA Background): hsl(227, 35%, 25%) 
+
+*/
+
+:root {
+  --softcyan: hsl(174, 77%, 80%);
+  --strongcyan: hsl(174, 86%, 45%);
+  --lightgrayred: hsl(14, 92%, 95%);
+  --lightred: hsl(15, 100%, 70%);
+  --paleblue: hsl(226, 100%, 87%);
+
+  --verypaleblue: hsl(230, 100%, 99%);
+  --lightgrayblue_empty: hsl(224, 65%, 95%);
+  --lightgrayblue_toggle: hsl(223, 50%, 87%);
+  --grayblue: hsl(225, 20%, 60%);
+  --darkblue: hsl(227, 35%, 25%);
+}
+
 .App {
   text-align: center;
+  width: 375px;
+  background-color: var(--verypaleblue);
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-image: url("./assets/images/bg-pattern.svg");
+  background-size: auto;
+  background-repeat: no-repeat;
+  background-position: 0 0;
+  padding: 1.5rem;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.header {
+  background-image: url("./assets/images/pattern-circles.svg");
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+  padding-top: 1.5rem;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+.header h3 {
+  color: var(--grayblue);
+  font-size: 15px;
+  line-height: 1.75rem;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+.container {
+  background-color: white;
+  color: var(--grayblue);
+  border-radius: 0.5rem;
+  padding: 1rem 1rem 2rem 1rem;
+  margin-top: 4rem;
+  box-shadow: 2px 5px 20px 2px rgba(0, 0, 0, 10%);
+}
+
+.slidecontainer{
+  margin-top: 3rem;
+  margin-bottom: 1rem;
+}
+
+.slider {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 100%;
+  height: 16px;
+  border-radius: 2rem;
+  background: var(--lightgrayblue_empty);
+}
+
+.slider::-webkit-slider-thumb{
+  -webkit-appearance: none;
+  appearance: none;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: var(--strongcyan);
+  box-shadow: 0px 10px 20px 10px var(--softcyan);
+  background-image: url("./assets/images/icon-slider.svg");
+  background-position: center;
+  background-repeat:no-repeat;
+  background-size: 1.5rem;
+}
+
+.slider::-webkit-slider-thumb:hover{
+}
+
+.cost{
   display: flex;
-  flex-direction: column;
-  align-items: center;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  align-items: center;
 }
 
-.App-link {
-  color: #61dafb;
+.cost span {
+  font-weight: bold;
+  font-size: xx-large;
+  color: var(--darkblue);
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.cost-toggle {
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+}
+
+#percent {
+  background-color: var(--lightgrayred);
+  color: var(--lightred);
+  border-radius: 1rem;
+  padding: 0.25rem 0.5rem 0.25rem 0.5rem;
+  font-weight: bold;
+}
+
+.toggle{
+  width: 50px;
+  height: 25px;
+  background-color: var(--lightgrayblue_toggle);
+  border-radius: 2rem;
+  position: relative;
+  transition: all 200ms ease-in-out;
+}
+
+.toggle.active{
+  background-color: var(--softcyan);
+  transition: all 200ms ease-in-out;
+}
+
+.toggleButton{
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  background-color: white;
+  position: absolute;
+  left: 8%;
+  top: 50%;
+  transform: translateY(-50%);
+  transition: all 200ms ease-in-out;
+}
+
+.toggleButton.active{
+  background-color: var(--strongcyan);
+  left: 54%;
+  transition: all 200ms ease-in-out;
+}
+
+.features-list {
+  margin-top: 2rem;
+  margin-bottom: 2rem;
+display: flex;
+justify-content: center;
+}
+
+.features-list ul {
+  list-style: none;
+  text-align: start;
+  margin-left: -3rem;
+}
+
+.features-list img {
+  margin-right: 1rem;
+}
+
+.button-start {
+  background: var(--darkblue);
+  border: none;
+  padding: 1rem 3rem 1rem 3rem;
+  color: var(--paleblue);
+  border-radius: 2rem;
+  font-weight: 600;
+  cursor: pointer;
 }
